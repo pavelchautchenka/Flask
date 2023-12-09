@@ -1,0 +1,264 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #1a1f25;
+  font-family: 'Roboto', sans-serif;
+}
+
+.clear {
+  clear: both;
+}
+
+.text{
+  color: #bdbbbb;
+  padding: 10px;
+  height: 8px;
+}
+
+#man-people-user, #lock-locker {
+  fill: white;
+}
+.wrapper {
+  width: 300px;
+  margin: 12% auto;
+}
+
+form {
+  position: relative;
+}
+
+.clear {
+  clear: both;
+}
+
+.card {
+    padding: 20px;
+    margin: 5px;
+    border-radius: 8px;
+    border: 2px solid #22272d;
+    width: 330px;
+}
+.sign-in {
+  float: left;
+  color: white;
+  font-size: 1.3em;
+}
+
+.button {
+  float: right;
+  color: #7f8084;
+  border: 1px solid #22272d;
+  padding: 7px 15px;
+  border-radius: 3px;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #2d2d2d;
+}
+
+.lock {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  padding: 7px;
+  left: 5px;
+}
+.lock::after {
+  content: "";
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  background: #22272d;
+  top: 0px;
+  left: 100%;
+}
+
+.user {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  padding: 7px;
+  left: 5px;
+}
+.user::after {
+  content: "";
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  background: #22272d;
+  top: 0px;
+  left: 100%;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  height: 40px;
+  border-radius: 3px;
+  margin: 5px 0;
+  outline: none;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  border: 1px solid white;
+  box-shadow: none;
+}
+
+input, input[type="password"]:focus {
+  border: 1px solid white;
+  box-shadow: none;
+}
+
+.user-input:focus .user {
+  background: white !important;
+}
+
+input[type="text"] {
+  background: transparent;
+  border: 2px solid #22272d;
+  padding-left: 45px;
+  color: #e6b333;
+}
+
+input[type="password"] {
+  background: transparent;
+  border: 2px solid #22272d;
+  padding-left: 45px;
+  color: #e6b333;
+}
+
+input[type="submit"] {
+  background: #e6b333;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.in {
+  background: #e6b333;
+  color: #8a8888;
+  text-align: center;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.radio-check {
+  width: 50px;
+  height: 20px;
+  border: 1px solid #22272d;
+  border-radius: 30px;
+  margin-top: 10px;
+  float: left;
+  text-align: center;
+  padding: 4px 0;
+  color: #e6b333;
+  font-size: 0.65em;
+  position: relative;
+}
+.radio-check label {
+  margin: 0 2px;
+  cursor: pointer;
+}
+.radio-check .switch-selection {
+  display: block;
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #babbbd;
+  margin-top: -11px;
+  margin-left: 11px;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+
+.radio-yes:checked ~ .switch-selection {
+  margin-left: 25px !important;
+}
+
+.check-label {
+  font-size: 0.8em;
+  color: #7f8084;
+  margin-top: 10px;
+  float: left;
+  padding: 3px 0;
+  margin-left: 10px;
+}
+
+.forgot-label {
+  font-size: 0.8em;
+  color: #7f8084;
+  margin-top: 10px;
+  float: right;
+  padding: 3px 0;
+  cursor: pointer;
+}
+
+.custom-btn {
+  align-self: center;
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 1px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  margin: auto;
+
+  position: relative;
+  display: block;
+
+  outline: none;
+}
+.btn-11 {
+  border: none;
+  background: rgb(251,33,117);
+    background: linear-gradient(0deg, rgb(238, 185, 14) 0%, rgb(236, 209, 17) 100%);
+    color: #fff;
+    overflow: hidden;
+}
+.btn-11:hover {
+    text-decoration: none;
+    color: #fff;
+}
+.btn-11:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+    animation: shiny-btn1 3s ease-in-out infinite;
+}
+.btn-11:hover{
+  opacity: .7;
+}
+.btn-11:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.text{
+  color:white ;
+  text-decoration: none;
+  height: 10px;
+}
