@@ -51,5 +51,4 @@ def users_view(username: str):
         "user_dz19.html",
         username=user.username,
         email=user.email,
-        password=user.password
-    )
+        password=user.password)
