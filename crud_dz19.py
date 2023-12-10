@@ -1,42 +1,26 @@
 from sqlalchemy import select
-from models_19 import User, session
+from models_19 import Note, session
 
 
-def get_user(username: str) -> User:
-    with session() as conn:
-        query = select(User).where(User.username == username)
-
-        return conn.execute(query).scalar_one()
+def get_all_notes():
+    return session.execute(select(Note)).scalars().all()
 
 
-def create_user(username: str, password: str, email: str) -> User:
-    with session() as conn:
-        user = User(username=username, password=password, email=email)
-        conn.add(user)
-        conn.commit()
-        conn.refresh(user)
-    return user
+def get_notes(uuid: str):
+    query = select(Note).where(Note.uuid == uuid)
+
+    return session.execute(query).scalar_one()
 
 
-def get_all_users() -> list[User]:
-    with session() as conn:
-        return conn.execute(select(User)).scalars().all()
+def create_notes(title: str, content: str):
+    note = Note(title=title, content=content)
+    session.add(note)
+    session.commit()
+    session.refresh(note)
+    return note
 
 
-def add_users():
-    with session() as connection:
-        user = User(username="igor", password="PASSWORD", email="igor@mail.com")
-
-
-        connection.add(user)
-        connection.add(
-            User(username="user123", password="PASSWORD", email="user123@mail.com")
-        )
-        connection.add(
-            User(username="user111", password="PASSWORD", email="user111@mail.com")
-        )
-        connection.add(
-            User(username="user999", password="PASSWORD", email="user999@mail.com")
-        )
-
-        connection.commit()
+def add_notes():
+    session.add(Note(title='title1',content='content 1'))
+    session.add(Note(title='title2', content='content 2'))
+    session.commit()

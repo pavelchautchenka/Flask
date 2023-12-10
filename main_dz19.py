@@ -1,19 +1,24 @@
 from flask import Flask, Response, request, render_template, redirect, url_for
 from sqlalchemy import exc
 
-from crud_dz19 import add_users, get_user, create_user, get_all_users
+from crud_dz19 import get_notes, create_notes, get_all_notes,add_notes
 from models_19 import create_table, drop_tables
 
-app = Flask(__name__, template_folder="templates", static_folder="static", static_url_path="/static-files/")
+app = Flask(__name__,
+            template_folder="templates",
+            static_folder="static",
+            static_url_path="/static-files/")
 
 drop_tables()
 create_table()
-add_users()
+add_notes()
 
-@app.route("/",methods=["GET"])
+
+@app.route("/", methods=["GET"])
 def home_page_view():
-    all_users = get_all_users()
-    return render_template("home_dz19.html", users=all_users)
+    all_notes = get_all_notes()
+    return render_template("home_dz19.html", notes=all_notes)
+
 
 @app.route("/register", methods=["GET"])
 def get_register_view():
@@ -21,34 +26,35 @@ def get_register_view():
 
 
 @app.route("/register", methods=["POST"])
-def register_user_view():
-    user_data = request.form
+def register_note_view():
+    note_data = request.form
     try:
-        user = create_user(
-            username=user_data["username"],
-            password=user_data["password"],
-            email=user_data["email"]
+        note = create_notes(
+            title=note_data["title"],
+            content=note_data["content"]
         )
     except exc.IntegrityError:
 
-        return f"""Пользователь с username: {user_data['username']}
-         либо с email: {user_data['email']} уже существует"""
+        return f"""Note with username: {note_data['title']}
+         already existed"""
 
-    return redirect(url_for("users_view", username=user.username))
+    return redirect(url_for("note_view", uuid=note.uuid))
 
 
-@app.route("/<username>", methods=["GET"])
-def users_view(username: str):
+@app.route("/<uuid>", methods=["GET"])
+def note_view(uuid):
 
 
     try:
-        user = get_user(username)
+        note = get_notes(uuid)
     except exc.NoResultFound:
 
-        return Response("User not found.", status=404)
+        return Response("Note not found.", status=404)
 
     return render_template(
-        "user_dz19.html",
-        username=user.username,
-        email=user.email,
-        password=user.password)
+        "note_dz19.html",
+        uuid=note.uuid,
+        title=note.title,
+        content=note.content,
+        created_at=note.created_at
+        )

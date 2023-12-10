@@ -1,25 +1,25 @@
-from sqlalchemy import Column, Integer, String, VARCHAR, Text, select
+from sqlalchemy import Column, Integer, String, VARCHAR, Text, select, DateTime
 from sqlalchemy.engine import create_engine
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
-
+import uuid
+from datetime import datetime
 
 dsn = "sqlite:///hometsk19.db"
 engine = create_engine(dsn, echo=True)
-session = sessionmaker(bind=engine, autoflush=False)
+Session = sessionmaker(bind=engine, autoflush=False)
+session = Session()
+
 
 class Base(DeclarativeBase):
     pass
 
 
-class User(Base):
-    __tablename__ = "users"
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    username = Column(String(64), unique=True, nullable=False)
-    password = Column(String(64), nullable=False)
-    email = Column(String(200), unique=True, nullable=False)
-
-    def __str__(self):
-        return f"User: {self.username}"
+class Note(Base):
+    __tablename__ = "notes"
+    uuid = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    title = Column(VARCHAR(100))
+    content = Column(Text)
+    created_at = Column(DateTime, default=datetime.now())
 
 
 def create_table():
@@ -30,8 +30,8 @@ def drop_tables():
     Base.metadata.drop_all(engine)
 
 
-drop_tables()
-create_table()
+
+
 
 
 

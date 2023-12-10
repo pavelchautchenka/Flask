@@ -262,3 +262,10 @@ input[type="radio"] {
   text-decoration: none;
   height: 10px;
 }
+
+.textarea{
+  color: #7f8084;
+  background: #1a1f25;
+
+
+}

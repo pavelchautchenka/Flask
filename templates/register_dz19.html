@@ -67,7 +67,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute">
 
 <div class="wrapper">
 <div class="header">
-<h3 class="sign-in">Sign in</h3>
+<h3 class="sign-in">Your Note</h3>
 
 </div>
    <div class="clear"></div>
@@ -80,30 +80,20 @@ xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute">
                     </g>
                   </svg>
          </label>
-        <input class="user-input"  name="username" type="text" placeholder="My name is"  />
+        <input class="user-input"  name="title" type="text" placeholder="Title"  />
       </div>
-       <div>
-         <label class="user" for="text">
-           <svg viewBox="0 0 32 32">
-                    <g filter="">
-                      <use xlink:href="#man-people-user"></use>
-                    </g>
-                  </svg>
-         </label>
-        <input class="user-input"  name="email" type="text" placeholder="My Email" />
+       <div >
+
+
+        <textarea  class="textarea" name="content" rows="5" cols="40">Your Content...
+        </textarea>
+
       </div>
       <div>
-        <label class="lock" for="password">
-          <svg viewBox="0 0 32 32">
-             <g filter="">
-               <use xlink:href="#lock-locker"></use>
-              </g>
-            </svg>
-        </label>
-        <input  name="password" type="password" placeholder="Password" />
+
       </div>
      <div>
-      <input type="submit" value="Sign in" />
+      <input type="submit" value="Send" />
     </div>
     <div class="radio-check">
       <input type="radio" class="radio-no" id="no" name="remember" value="no" checked>

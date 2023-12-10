@@ -13,20 +13,17 @@
 </head>
 
 <body>
-
-
-
-         <button class="custom-btn btn-11"><a class="text" href="/register"> Sign In  </a><div class="dot"></div></button>
+     <button class="custom-btn btn-11"><a class="text" href="/register"> Send your Note  </a><div class="dot"></div></button>
 
 
     <div class="wrapper">
     <div style="align-self: flex-start " >
-    <h1 class="sign-in">All Users: </h1>
+    <h1 class="sign-in">All Notes: </h1>
      <div class="content">
      <br>
         <br>
 
-        {% for user in users %}
+        {% for note in notes %}
             <div class="card" >
                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                       <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
@@ -38,10 +35,9 @@
                       <use xlink:href="#man-people-user"></use>
                     </g>
 
-                    <a class="text" href="/{{ user.username }}">{{ user.username }}</a></h6>
+                    <a class="text" href="/{{ note.title }}">{{ note.title }}</a></h6>
                 <div>
-                    <div class="text">Email: {{ user.email }} </div>
-                    <div class="text">Password: {{ user.password }} </div>
+                    <div class="text">Content: {{ note.content }} </div>
                 </div>
             </div>
         {% endfor %}
